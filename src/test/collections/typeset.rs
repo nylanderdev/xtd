@@ -51,3 +51,11 @@ fn test_clear() {
     set.clear();
     assert!(!set.contains::<String>())
 }
+
+#[test]
+fn test_insert_dynamic() {
+    let mut set = TypeSet::new();
+    let element = Box::new(String::from(SAMPLE_STR));
+    set.insert_dynamic(element);
+    assert!(set.contains::<String>())
+}
