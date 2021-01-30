@@ -1,6 +1,5 @@
 use std::any::{Any, TypeId};
 use std::collections::HashMap;
-use std::fmt::Debug;
 
 /// A set capable of holding one item per type of any type and casting it automatically upon access
 pub struct TypeSet {
@@ -30,7 +29,7 @@ impl TypeSet {
         self.elements.get_mut(&TypeId::of::<E>())?.downcast_mut()
     }
 
-    pub fn remove<E: Sized + 'static + Debug>(&mut self) -> Option<E> {
+    pub fn remove<E: Sized + 'static>(&mut self) -> Option<E> {
         Some(*self.elements.remove(&TypeId::of::<E>())?.downcast().ok()?)
     }
 
