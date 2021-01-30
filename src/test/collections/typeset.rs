@@ -27,11 +27,20 @@ fn test_get_mut() {
 }
 
 #[test]
-fn test_remove() {
+fn test_remove_equality() {
     let mut set = TypeSet::new();
     let element = String::from(SAMPLE_STR);
     set.insert(element.clone());
     assert_eq!(set.remove::<String>(), Some(element))
+}
+
+#[test]
+fn test_remove_removes() {
+    let mut set = TypeSet::new();
+    let element = String::from(SAMPLE_STR);
+    set.insert(element.clone());
+    set.remove::<String>();
+    assert!(!set.contains::<String>())
 }
 
 #[test]
